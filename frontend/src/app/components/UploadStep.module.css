@@ -1,0 +1,229 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ─── Drop Zone ─── */
+.dropZone {
+  position: relative;
+  border: 2px dashed var(--border-default);
+  border-radius: var(--radius-xl);
+  background: var(--bg-card);
+  padding: 64px 40px;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  text-align: center;
+  overflow: hidden;
+}
+
+.dropZone::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(99, 102, 241, 0.04) 0%, transparent 70%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.dropZone:hover {
+  border-color: var(--border-focus);
+  background: var(--bg-card-hover);
+}
+
+.dropZone:hover::before {
+  opacity: 1;
+}
+
+.dropZone:focus-visible {
+  outline: 2px solid var(--brand-primary);
+  outline-offset: 2px;
+}
+
+.dragging {
+  border-color: var(--brand-primary) !important;
+  background: rgba(99, 102, 241, 0.06) !important;
+  transform: scale(1.005);
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.12), var(--shadow-glow);
+}
+
+.dragging::before {
+  opacity: 1 !important;
+}
+
+.loading {
+  cursor: default;
+  pointer-events: none;
+  border-color: var(--border-subtle);
+}
+
+.hiddenInput {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* ─── Drop Content ─── */
+.dropContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.uploadIcon {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 4px;
+  transition: transform var(--transition-base);
+}
+
+.uploadIcon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.dropZone:hover .uploadIcon {
+  transform: translateY(-4px);
+}
+
+.iconBounce {
+  transform: translateY(-6px) scale(1.05) !important;
+}
+
+.mainText {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.subText {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 300px;
+  color: var(--text-disabled);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin: 4px 0;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border-subtle);
+}
+
+.formatTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.formatTag {
+  padding: 4px 12px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* ─── Loading State ─── */
+.loadingIcon {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spinRing {
+  width: 48px;
+  height: 48px;
+  border: 3px solid var(--border-default);
+  border-top-color: var(--brand-primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+/* ─── Local Error ─── */
+.localError {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--accent-red-bg);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  color: #fca5a5;
+  font-size: 0.875rem;
+}
+
+.localError svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  color: var(--accent-red);
+}
+
+/* ─── Info Grid ─── */
+.infoGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.infoCard {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 18px 20px;
+  transition: all var(--transition-base);
+}
+
+.infoCard:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-default);
+  transform: translateY(-2px);
+}
+
+.infoIcon {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.infoTitle {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.infoDesc {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}

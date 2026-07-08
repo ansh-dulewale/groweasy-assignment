@@ -1,0 +1,56 @@
+.main {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  padding: 0 0 80px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.content {
+  margin-top: 32px;
+}
+
+.errorBanner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+  margin-top: 20px;
+  color: #fca5a5;
+  font-size: 0.9rem;
+  animation: slideUp 0.3s ease;
+}
+
+.errorBanner svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  color: var(--accent-red);
+}
+
+.errorBanner span {
+  flex: 1;
+}
+
+.errorBanner button {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 0.85rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  transition: color var(--transition-fast);
+}
+
+.errorBanner button:hover {
+  color: var(--text-primary);
+}
